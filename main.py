@@ -69,7 +69,7 @@ while(True): # To-do: agregar una condición para detener el bucle de juego
     #Validamos habitación destino:
     if habitacion_destino not in mapa[habitacion_actual]["lista_habitaciones"]:
         # Si la habitación elegida por el usuario NO está en la lista asignada a mi clave actual...
-        print("¡No puedes hacer eso!, \"", nueva_habitacion, "\" NO es accesible desde aquí.")
+        print("¡No puedes hacer eso!, \"", habitacion_destino, "\" NO es accesible desde aquí.")
         time.sleep(2)
         continue
 
@@ -117,4 +117,3 @@ while(True): # To-do: agregar una condición para detener el bucle de juego
             inventario_personaje.append(item)                  # Agregamos el ítem al inventario del PJ
             print("Has recibido el ítem: ", item)
             mapa[habitacion_actual]["items"].remove(item)      # Eliminamos el item del mapa
-    
