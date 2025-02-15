@@ -1,8 +1,9 @@
-# [M5.L1] - Actividad #3: "Bucle Principal"
+# [M5.L1] - Actividad #4: "Transición"
 
-# Creamos bucle principal
-# Nota: Por ahora sólo mostraemos nuestra habitación actual
-#       y aquellas a las que podemos acceder desde "aquí"
+# Implementamos desplazamiento entre habitaciones
+# Agregamos condición para terminar el bucle principal
+
+import time
 
 mapa = {
         # ACTUALMENTE mapa es un diccionario donde cada clave 
@@ -25,11 +26,27 @@ habitacion_actual = "Spawn"
 
 # Bucle de Juego:
 while(True): # To-do: agregar una condición para detener el bucle de juego
-    print('============================')
+    print('\n============================')
     print('Estás en la habitación', habitacion_actual)
 
     # Mostrar habitaciones disponibles/accesibles:
     for habitacion_contigua in mapa[habitacion_actual]:
         print("Puedes ir a", habitacion_contigua)
 
-    input("En la próxima tarea pediremos al jugador que elija hacia que habitación avanzar...")
+    habitacion_destino = input("¿Qué habitación eliges?: ")
+
+    #Validamos habitación destino:
+    if habitacion_destino not in mapa[habitacion_actual]: # Si la habitación elegida por el usuario NO está en la lista asignada a mi clave actual...
+        print("¡No puedes hacer eso!, \"", nueva_habitacion, "\" NO es accesible desde aquí.")
+        time.sleep(2)
+        continue
+
+    #Condición para terminar la partida
+    elif(habitacion_destino == "Salida"):
+        print("¡Eres libre!")
+        time.sleep(2)
+        break
+
+    else:
+        # Si la habitacion ES válida y NO es la salida:
+        habitacion_actual = habitacion_destino
